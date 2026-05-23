@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sorakang-hci.github.io/sitemap.xml
