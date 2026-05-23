@@ -1865,12 +1865,16 @@
     </footer>
 
     <script>
-      // Email protection: decode on load
+      // Email protection: copy to clipboard
       document.getElementById('emailLink').addEventListener('click', function(e) {
         e.preventDefault();
         var email = atob('c29yYWthbmdAc251LmFjLmty'); // Base64 encoded email
-        window.location.href = 'mailto:' + email;
+        navigator.clipboard.writeText(email);
+        var original = this.textContent;
+        this.textContent = '복사됨!';
+        setTimeout(() => {
+          this.textContent = original;
+        }, 2000);
       });
-      // Show email hint on hover
-      document.getElementById('emailLink').title = 'Click to email';
+      document.getElementById('emailLink').title = 'Click to copy email';
     </script>
