@@ -1,0 +1,1807 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Sora Kang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f8f4ee;
+    --ink: #15140f;
+    --ink-2: #2a2926;
+    --muted: #7a7468;
+    --rule: #e2dcc9;
+    --rule-2: #ece5d0;
+    --accent: #9e3623;
+    --b-work:    #f0e8d4;   /* warm sand */
+    --b-research:#e3ecf6;   /* barely blue */
+    --b-acting:  #f4e8e2;   /* barely rose */
+    --b-projects:#e6f0e5;   /* barely sage */
+    --b-news:    #eceaf7;   /* barely lavender */
+    --b-contact: #1f3a2e;   /* deep green */
+    --c-yellow:  #d99a1f;
+    --c-blue:    #2d5fb3;
+    --c-green:   #3f7a44;
+    --serif: "Newsreader", "Source Serif Pro", Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --kr: "Noto Sans KR", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); max-width: 100%; overflow-x: hidden; }
+  body {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  a { color: inherit; }
+
+  .mono {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .nav .inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .nav .brand {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 48px; }
+  .nav a.link {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav a.link:hover { color: var(--accent); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-actions a {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    color: var(--ink-2);
+    background: transparent;
+    transition: border-color .12s, background .12s, color .12s;
+    white-space: nowrap;
+  }
+  .nav-actions a:hover { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .nav-actions a.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .panel-intro {
+    padding: 20px 24px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .panel-intro p {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .earlier-divider {
+    padding: 14px 24px 4px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .page { max-width: 1120px; margin: 0 auto; padding: 32px 24px 64px; }
+
+  /* Hero band */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 56px;
+    align-items: start;
+    margin-bottom: 32px;
+    background: #f0e8d4;
+    border-radius: 12px;
+    padding: 56px;
+  }
+  .hero .copy h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    margin: 24px 0 24px;
+    text-wrap: balance;
+  }
+  .hero .copy .roles {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+  .hero .copy .roles .pri {
+    color: var(--ink);
+    background: var(--ink);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .hero .copy .roles .sec {
+    color: var(--ink);
+    background: rgba(0,0,0,0.08);
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .hero .copy .roles .bar { display: none; }
+  .hero .copy .lede {
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0 0 16px;
+    text-wrap: pretty;
+    max-width: 56ch;
+  }
+  .hero .copy .lede a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  .hero .copy .lede a:hover { text-decoration-color: var(--accent); }
+  .hero .copy .meta {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 18px;
+    align-items: baseline;
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+  }
+  .hero .copy .meta .k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .hero .copy .meta .v { font-size: 15px; color: var(--ink-2); }
+
+  .hero .portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ec8a5b;
+    background-image: url('../assets/profile.jpg');
+    background-size: cover;
+    background-position: center 22%;
+  }
+  .hero .portrait .tag {
+    position: absolute;
+    inset: auto 0 12px 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-2);
+  }
+  .hero .portrait .id {
+    position: absolute;
+    inset: 12px 12px auto auto;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .hero .portrait .center {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-2);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.0);
+  }
+
+  /* Section header */
+  .h-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+  }
+  .h-section .num {
+    font-family: var(--mono);
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .h-section .actions {
+    grid-column: 2;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 4px;
+  }
+  .h-section .actions a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+
+  section { margin-bottom: 32px; }
+  section.band {
+    border-radius: 12px;
+    padding: 64px 56px;
+  }
+  section.band-research { background: var(--b-research); }
+  section.band-acting   { background: var(--b-acting); }
+  section.band-projects  { background: var(--b-projects); }
+  section.band-news      { background: var(--b-news); }
+  section.band-work     { background: #ffffff; border: 1px solid var(--rule); }
+
+  /* Featured work — card grid */
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .work-card .thumb {
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    background-color: #ecebe5;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .work-card .thumb::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(0,0,0,0.045) 14px 15px);
+  }
+  .work-card .thumb.t1 { background-color: #d99a1f; }
+  .work-card .thumb.t2 { background-color: #6fa4dc; }
+  .work-card .thumb.t3 { background-color: #e08267; }
+  .work-card .thumb .lbl {
+    position: absolute;
+    inset: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-2);
+  }
+  .work-card .thumb .lbl .r { color: var(--muted); }
+  .work-card .thumb .ctr {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+  }
+  .work-card .meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .work-card .meta .tag { color: var(--ink-2); }
+  .work-card h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.3;
+    margin: 0 0 6px;
+    letter-spacing: -0.005em;
+  }
+  .work-card p {
+    font-size: 14.5px;
+    color: var(--muted);
+    margin: 0;
+    line-height: 1.45;
+  }
+
+  /* Publications */
+  .pubs { display: grid; gap: 0; }
+
+  /* Research themes — old code removed */
+
+  /* Thread cards */
+  .thread-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .thread-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 22px 18px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.5);
+    border-left: 4px solid var(--tc-color, var(--rule));
+    cursor: pointer;
+    text-align: left;
+    transition: transform .15s, box-shadow .15s, background .15s;
+  }
+  .thread-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  }
+  .thread-card.active {
+    background: var(--tc-color);
+    border-left-color: transparent;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .thread-card.t1 { --tc-color: #9e3623; }
+  .thread-card.t2 { --tc-color: #1c4a8a; }
+  .thread-card.t3 { --tc-color: #276430; }
+
+  .tc-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--tc-color);
+    background: rgba(0,0,0,0.08);
+    padding: 2px 8px;
+    border-radius: 999px;
+    align-self: start;
+    transition: color .15s, background .15s;
+  }
+  .thread-card.active .tc-num {
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.2);
+  }
+  .tc-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
+    transition: color .15s;
+  }
+  .thread-card.active .tc-title { color: #fff; }
+  .tc-desc {
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--muted);
+    margin: 0;
+    flex: 1;
+    transition: color .15s;
+  }
+  .thread-card.active .tc-desc { color: rgba(255,255,255,0.80); }
+
+
+  /* Thread panel */
+  .thread-panel {
+    background: rgba(255,255,255,0.55);
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .35s ease, padding .25s ease;
+    margin-bottom: 0;
+  }
+  .thread-panel.open {
+    max-height: 1800px;
+    padding: 4px 0 0;
+    margin-bottom: 20px;
+  }
+  .thread-panel .pubs { display: grid; gap: 0; }
+  .thread-panel .pub {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 20px;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    align-items: baseline;
+  }
+  .thread-panel .pub:last-child { border-bottom: none; }
+  .thread-panel .pub .yr {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .thread-panel .pub .body h4 {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 4px;
+    line-height: 1.3;
+  }
+  .thread-panel .pub .body .au {
+    font-family: var(--serif);
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .thread-panel .pub .body .au b { color: var(--ink); font-weight: 500; }
+  .thread-panel .pub .body .abstract {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 8px 0 0;
+  }
+  .thread-panel .pub .right {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+  }
+  .thread-panel .pub .right .links { display: flex; gap: 10px; justify-content: flex-end; margin-top: 6px; }
+  .thread-panel .pub .right .links a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+  }
+  .thread-panel .pub .right .links a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+  /* Earlier work */
+  .earlier-section {
+    border-top: 1px solid rgba(0,0,0,0.10);
+    padding-top: 14px;
+    margin-top: 8px;
+  }
+  .earlier-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .earlier-section .pub {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    align-items: baseline;
+  }
+  .earlier-section .pub:last-child { border-bottom: none; }
+  .earlier-section .pub .yr {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+  .earlier-section .pub .body h4 {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    font-weight: 500;
+    margin: 0 0 2px;
+    line-height: 1.3;
+  }
+  .earlier-section .pub .body .au {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .earlier-section .pub .body .au b { color: var(--ink); font-weight: 500; }
+  .earlier-section .pub .right {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .pub {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 28px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .pub:last-child { border-bottom: none; }
+  .pub .yr { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+  .pub .body h4 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0 0 4px;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+  .pub .body .au {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+  }
+  .pub .body .au b { color: var(--ink); font-weight: 500; }
+  .pub .right {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-2);
+  }
+  .pub .right .award { color: var(--c-yellow); display: block; margin-bottom: 4px; font-weight: 500; }
+  .pub .right .links { margin-top: 4px; display: flex; gap: 12px; justify-content: flex-end; }
+  .pub .right .links a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+  }
+  .pub .right .links a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+  /* Hero links */
+  .hero-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    align-items: center;
+  }
+  .hero-links a {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 7px 14px;
+    border: 1px solid rgba(0,0,0,0.18);
+    border-radius: 999px;
+    color: var(--ink-2);
+    background: rgba(255,255,255,0.4);
+    transition: border-color .12s, background .12s, color .12s;
+    white-space: nowrap;
+  }
+  .hero-links a:hover { border-color: var(--ink); background: rgba(255,255,255,0.8); color: var(--ink); }
+
+
+  /* Stage / acting list */
+  .stage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+  }
+  .stage .row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .stage .row .y { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .stage .row .w { font-size: 15.5px; }
+  .stage .row .w .as { color: var(--muted); font-size: 13.5px; margin-left: 6px; }
+  .stage .row .v { font-family: var(--mono); font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* Acting — horizontal scroll gallery */
+  .acting-gallery {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-bottom: 36px;
+    border-radius: 8px;
+    cursor: grab;
+  }
+  .acting-gallery:active { cursor: grabbing; }
+  .acting-gallery::-webkit-scrollbar { display: none; }
+  .acting-gallery img {
+    height: 330px;
+    width: auto;
+    min-width: 180px;
+    border-radius: 6px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .acting-text {
+    width: 100%;
+  }
+  .acting-text p {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0 0 14px;
+    text-wrap: pretty;
+  }
+  .acting-text p:last-child { margin-bottom: 0; }
+
+  /* Contact block — dark green band */
+  section.band-contact {
+    background: var(--b-contact);
+    color: #f6efdd;
+    border-radius: 12px;
+    padding: 56px;
+  }
+  section.band-contact .h-section {
+    border-bottom-color: rgba(255,255,255,0.15);
+  }
+  section.band-contact .h-section .num,
+  section.band-contact .h-section h2 { color: #f6efdd; }
+
+  .contact-block {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .contact-block .left .email {
+    font-family: var(--serif);
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #f6efdd;
+    text-decoration: none;
+    border-bottom: 2px solid #f3c98a;
+    padding-bottom: 4px;
+    display: inline-block;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .contact-block .left p {
+    font-size: 15px;
+    color: rgba(246,239,221,0.7);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 36ch;
+  }
+  .contact-block .actions {
+    display: flex; flex-direction: column;
+    gap: 10px;
+  }
+  .contact-block .actions .btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 6px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.04);
+    transition: border-color .12s, transform .12s;
+  }
+  .contact-block .actions .btn:hover { border-color: #f3c98a; }
+  .contact-block .actions .btn .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f6efdd;
+  }
+  .contact-block .actions .btn .meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: rgba(246,239,221,0.55);
+  }
+  .contact-block .actions .btn.primary {
+    background: #f3c98a;
+    border-color: #f3c98a;
+  }
+  .contact-block .actions .btn.primary .label { color: var(--b-contact); }
+  .contact-block .actions .btn.primary .meta { color: rgba(31,58,46,0.55); }
+
+  footer.foot {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+
+  /* Projects */
+  .proj-sub {
+    margin-bottom: 40px;
+  }
+  .proj-sub-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+  }
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .dev-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  /* Compact project tile */
+  .proj-tile {
+    background: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    padding: 18px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border: 1px solid rgba(0,0,0,0.07);
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s, background .15s;
+    text-align: left;
+    min-height: 110px;
+  }
+  .proj-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+    background: rgba(255,255,255,0.95);
+  }
+  .proj-tile .pt-year {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .proj-tile .pt-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .proj-tile .pt-brief {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: auto;
+  }
+  .proj-tile .pt-arrow {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    transition: color .12s;
+  }
+  .proj-tile:hover .pt-arrow { color: var(--ink); }
+
+  /* Project modal */
+  .proj-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .proj-modal.open { display: flex; }
+  .proj-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(4px);
+  }
+  .proj-modal-content {
+    position: relative;
+    background: var(--bg);
+    border-radius: 14px;
+    padding: 36px 40px 44px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 1;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.18);
+  }
+  .proj-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.08);
+    border: none;
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink);
+    transition: background .12s;
+  }
+  .proj-modal-close:hover { background: rgba(0,0,0,0.15); }
+  .pm-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .pm-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .pm-year {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .pm-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: -0.012em;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .pm-role {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: rgba(0,0,0,0.07);
+    padding: 4px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .pm-concept {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 0 0 16px;
+    text-wrap: pretty;
+  }
+  .pm-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .pm-tag {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid rgba(0,0,0,0.15);
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .pm-stack {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .pm-gallery {
+    margin: 16px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+  .pm-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .pm-gallery img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* Image lightbox modal */
+  .image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(2px);
+  }
+  .image-lightbox.open { display: flex; }
+  .image-lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+  .image-lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s;
+  }
+  .image-lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+  /* Video embed */
+  .pm-video {
+    margin: 16px 0;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .pm-video iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .news-hidden {
+    display: none;
+  }
+  .news-more-btn {
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 999px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: background .12s, border-color .12s;
+    display: block;
+  }
+  .news-more-btn:hover {
+    background: rgba(255,255,255,0.9);
+    border-color: var(--ink);
+  }
+  /* News */
+  .news-list {
+    display: grid;
+    gap: 0;
+  }
+  .news-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    align-items: baseline;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-date {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+  .news-date.recent { color: var(--accent); font-weight: 500; }
+  .news-body {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .news-body strong { color: var(--ink); font-weight: 500; }
+  .news-body a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(0,0,0,0.25);
+  }
+  .news-body a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+  .news-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.07);
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-right: 6px;
+    color: var(--ink-2);
+    vertical-align: 1px;
+  }
+  @media (max-width: 760px) {
+    /* Page & bands */
+    .page { padding: 16px 14px 48px; }
+    section.band { padding: 24px 16px; border-radius: 6px; }
+    section { margin-bottom: 12px; }
+
+    /* Nav */
+    .nav .inner { padding: 10px 16px; flex-wrap: nowrap; gap: 8px; justify-content: space-between; }
+    .nav ul { gap: 8px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -ms-overflow-style: none; }
+    .nav ul::-webkit-scrollbar { display: none; }
+    .nav a.link { font-size: 9.5px; letter-spacing: 0.03em; white-space: nowrap; }
+    .nav-actions { gap: 4px; flex-shrink: 0; }
+    .nav-actions a:not(.primary) { display: none; }
+
+    /* Hero */
+    .hero { grid-template-columns: 1fr; gap: 24px; padding: 24px 16px; border-radius: 6px; }
+    .hero .copy h1 { font-size: 34px; margin: 12px 0 14px; }
+    .hero .copy .lede { font-size: 15px; }
+    .hero .portrait { aspect-ratio: 4 / 3; border-radius: 6px; }
+
+    /* Section headers */
+    .h-section { gap: 10px; margin-bottom: 16px; }
+    .h-section .num { font-size: 10px; }
+
+    /* Thread cards — 3-col compact on mobile */
+    .thread-cards {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      overflow: visible !important;
+      gap: 10px;
+      padding-bottom: 0;
+    }
+    .thread-card {
+      min-width: 0;
+      padding: 14px 12px;
+      gap: 8px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.4);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+    .tc-num {
+      font-size: 9px;
+      padding: 3px 7px;
+      border-radius: 3px;
+    }
+    .tc-title { font-size: 11px; line-height: 1.3; letter-spacing: 0; font-weight: 500; }
+    .tc-desc { display: none; }
+
+    /* Hide pub year on mobile */
+    .thread-panel .pub .yr { display: none; }
+    .thread-panel .pub { grid-template-columns: 1fr auto !important; padding: 12px 14px; }
+    .earlier-section .pub .yr { display: none; }
+    .earlier-section .pub { grid-template-columns: 1fr auto !important; }
+
+    /* Making modal — centered on mobile */
+    .proj-modal { padding: 12px; }
+    .proj-modal-content { border-radius: 14px; max-height: 88vh; padding: 24px 18px 32px; overflow-y: auto; }
+    .proj-modal-content .pm-video { margin: 12px 0; aspect-ratio: 16 / 9; }
+    .proj-modal-content .pm-gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 12px 0; }
+    .proj-modal-content .pm-concept { font-size: 15px; margin: 12px 0; }
+    .tc-title { font-size: 17px; }
+    .tc-desc { font-size: 13px; }
+
+    /* Thread panel pubs */
+    .thread-panel.open { max-height: 2000px; }
+    .thread-panel .pub {
+      display: block !important;
+      grid-template-columns: none !important;
+      padding: 16px 14px !important;
+      margin-bottom: 12px;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.3);
+    }
+    .thread-panel .pub .yr { display: none; }
+    .thread-panel .pub .body { margin-bottom: 10px; }
+    .thread-panel .pub .body h4 { font-size: 14px; margin: 0 0 6px 0; line-height: 1.4; }
+    .thread-panel .pub .body .au { font-size: 12px; margin-bottom: 6px; }
+    .thread-panel .pub .body .abstract { font-size: 12px; margin: 8px 0 0; }
+    .thread-panel .pub .right {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+    .thread-panel .pub .right .links { justify-content: flex-end; gap: 0; }
+    .panel-intro { padding: 14px 14px 10px; }
+    .panel-intro p { font-size: 15px; }
+
+    /* General pubs */
+    .pub { grid-template-columns: 44px 1fr !important; gap: 8px; }
+    .pub .right { grid-column: 2; text-align: left; }
+    .pub .right .links { justify-content: flex-start; }
+
+    /* Earlier section */
+    .earlier-section .pub { grid-template-columns: 44px 1fr auto !important; gap: 8px; }
+
+    /* Acting gallery */
+    .acting-gallery { border-radius: 4px; }
+    .acting-gallery img { height: 240px; min-width: 160px; width: auto; }
+    .acting-text p { font-size: 15px; }
+
+    /* News */
+    .news-item { grid-template-columns: 72px 1fr !important; gap: 8px; padding: 12px 0; }
+    .news-date { font-size: 9.5px; }
+    .news-body { font-size: 13.5px; line-height: 1.45; }
+
+    /* Projects */
+    .art-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .dev-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .proj-tile { min-height: 90px; padding: 14px 12px; }
+    .proj-tile .pt-title { font-size: 14px; }
+    .proj-modal-content { padding: 24px 20px 40px; border-radius: 12px; max-height: 80vh; }
+    .pm-title { font-size: 22px; }
+
+    /* Contact */
+    .contact-block { grid-template-columns: 1fr; }
+    .contact-block .left .email { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="inner">
+      <a href="#" class="brand">Sora Kang</a>
+      <ul>
+        <li><a class="link" href="#news">News</a></li>
+        <li><a class="link" href="#research">Research</a></li>
+        <li><a class="link" href="#acting">Acting</a></li>
+        <li><a class="link" href="#projects">Making</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section id="about" class="hero">
+      <div class="copy">
+        <div class="roles">
+          <span class="pri">HCI Researcher</span>
+          <span class="sec">Actress</span>
+        </div>
+        <h1>Sora Kang <span style="font-family: var(--kr); font-size: 0.6em; font-weight: 400; color: var(--muted); margin-left: 12px;">강소라</span></h1>
+        <p class="lede">Sora Kang is a Ph.D. candidate in Human-Computer Interaction (HCI) at Seoul National University, holding a Master of Design (MDes) in HCI from University of California, Berkeley. Grounded in her years as an actress, her research focuses on how to enhance collaborative artistic processes using AI. Her work covers two main areas: how generative AI can augment human creativity and thought, and how AI mediates communication across generations, cultures, and digital contexts.</p>
+        <div class="hero-links">
+          <a href="https://scholar.google.com/citations?user=gph5m7kAAAAJ" target="_blank">Google Scholar ↗</a>
+          <a href="https://www.linkedin.com/in/sora-design" target="_blank">LinkedIn ↗</a>
+          <a href="https://drive.google.com/file/d/1D7xCxb0Lk2m-3ATGP54QDgbBOkzh9jqz/view?usp=sharing" target="_blank">CV ↓</a>
+        </div>
+      </div>
+      <div class="portrait">
+        
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" class="band band-news">
+      <div class="h-section">
+        <span class="num">Updates</span>
+      </div>
+      <div class="news-list">
+
+        <div class="news-item">
+          <span class="news-date recent">May 2026</span>
+          <div class="news-body">
+            Going to <strong>DIS 2026</strong> to present <strong><a href="#">Designing Transparent AI-Mediated Language Support for Intergenerational Family Communication</a></strong> (Pwip) and serving as <strong>Student Volunteer</strong>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <span class="news-date recent">Apr 2026</span>
+          <div class="news-body">
+            <strong><a href="#">Analyzing Human Heuristics and Strategies in Everyday Decision-Making Conversations for Conversational AI Design</a></strong> accepted to <strong>CogSci 2026</strong>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <span class="news-date recent">Apr 2026</span>
+          <div class="news-body">
+            Participating in <strong>CHI 2026 Workshop on Tools for Thought</strong> with <strong><a href="#">Stop Writing for Me: Generative Refusal in AI Tools for Thought</a></strong>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <span class="news-date recent">Mar 2026</span>
+          <div class="news-body">
+            <strong><a href="https://arxiv.org/abs/2603.01314">Actor's Note: Examining the Role of AI-Generated Questions in Character Journaling for Actor Training</a></strong> accepted to <strong>CHI 2026</strong> 🎉🇪🇸
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">Oct 2025</span>
+          <div class="news-body">
+            Visiting scholar at the <a href="https://augmented-design-capability-studio.github.io/">Augmented Design Capability Studio Lab</a>, <strong>Carnegie Mellon University HCII</strong> through March 2026.
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">May 2025</span>
+          <div class="news-body">
+            Presented <em>Mirror or Mask? Actor Experiences within a Two-Stage GPT-Mediated Playwriting Pipeline</em> at <a href="https://chiwork-aidisclosure.github.io/program/">CHIWORK 2025</a> — Navigating Generative AI Disclosure, Ownership, and Accountability in Co-Creative Domains.
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">May 2025</span>
+          <div class="news-body">
+            Presenting <a href="https://arxiv.org/abs/2505.04890"><em>Theatrical Language Processing: Exploring AI-Augmented Improvisational Acting and Scriptwriting with LLMs</em></a> at <strong>ISEA 2025</strong>.
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">May 2025</span>
+          <div class="news-body">
+            Hosting <em>AAAA: Actors, AI, Algorithms, and Arts – Envisioning the Future of the Stage</em> at <strong>ISEA 2025</strong>. A one-day intensive exploring AI and performance through rehearsal, improvisation, and character development.
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">Apr 2025</span>
+          <div class="news-body">
+            <a href="https://dl.acm.org/doi/10.1145/3706599.3720222"><em>ExplainitAI: When do we trust artificial intelligence?</em></a> accepted as Late-Breaking Work at <strong>CHI 2025</strong>, Yokohama.
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">Dec 2024</span>
+          <div class="news-body">
+            Presented <a href="https://www.youtube.com/watch?v=ZSeaYJEIA_E"><em>GenSync: Bridging Intergenerational Communication with Generative AI</em></a> at the AMPS International Conference, Phoenix, Arizona.
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">Sep 2023</span>
+          <div class="news-body">
+            Started PhD at <a href="https://hcid.snu.ac.kr/">Human-Computer Interaction+Design Lab</a>, <strong>Seoul National University</strong>.
+          </div>
+        </div>
+
+        <div class="news-item news-hidden">
+          <span class="news-date">Dec 2022</span>
+          <div class="news-body">
+            Received <a href="https://design.berkeley.edu/">Master's degree in Design</a> from <strong>University of California, Berkeley</strong> 🎓
+          </div>
+        </div>
+
+      </div>
+      <button class="news-more-btn" id="newsMoreBtn">More ↓</button>
+    </section>
+
+    <script>
+      (function() {
+        var btn = document.getElementById('newsMoreBtn');
+        var items = document.querySelectorAll('.news-hidden');
+        var expanded = false;
+        items.forEach(function(el) { el.style.display = 'none'; });
+        btn.addEventListener('click', function() {
+          expanded = !expanded;
+          items.forEach(function(el) {
+            el.style.display = expanded ? 'grid' : 'none';
+          });
+          btn.textContent = expanded ? 'Less ↑' : 'More ↓';
+        });
+      })();
+    </script>
+
+
+    <!-- RESEARCH -->
+    <section id="research" class="band band-research">
+      <div class="h-section">
+        <span class="num">Research</span>
+      </div>
+
+      <div class="thread-cards">
+        <button class="thread-card t1 active" data-thread="1">
+          <h3 class="tc-title">Theatrical Language Processing</h3>
+          <p class="tc-desc">Generative AI for actors' creative practice.</p>
+                  </button>
+        <button class="thread-card t2" data-thread="2">
+          <h3 class="tc-title">Augmenting Creativity &amp; Cognition</h3>
+          <p class="tc-desc">AI in creative and cognitive tasks.</p>
+                  </button>
+        <button class="thread-card t3" data-thread="3">
+          <h3 class="tc-title">Mediating Human Interaction</h3>
+          <p class="tc-desc">AI as a mediator between people.</p>
+                  </button>
+      </div>
+
+      <div class="thread-panel open" id="panel-1">
+        <div class="panel-intro">
+          <p>A research thread that grew out of my background as an actor. I study how generative AI can support improvisation, scriptwriting, and character development in actor training.</p>
+        </div>
+        <div class="pubs">
+          <article class="pub">
+            <span class="yr">2025</span>
+            <div class="body">
+              <h4>Theatrical Language Processing: Exploring AI-Augmented Improvisational Acting and Scriptwriting with LLMs</h4>
+              <p class="au"><b>S. Kang</b>, J. Lee</p>
+              <p class="abstract">When actors improvise with an AI co-writer, the AI's unreliability turns out to be its strength — irregular, unexpected scripts push actors to think faster and create more. But when the AI gets too detailed, it crowds out the actor's own interpretation. A look at how AI can be a generative partner in acting, and where it should leave room.</p>
+            </div>
+            <div class="right">
+              <span>ISEA 2025</span>
+              <div class="links"><a href="https://arxiv.org/pdf/2505.04890" target="_blank">PDF</a></div>
+            </div>
+          </article>
+          <article class="pub" style="padding: 16px 24px 45px">
+            <span class="yr">2026</span>
+            <div class="body">
+              <h4>Actor's Note: Examining the Role of AI-Generated Questions in Character Journaling for Actor Training</h4>
+              <p class="au"><b>S. Kang</b>, J. Zoh, H. Kim, H. Park, H. Lim, J. Lee</p>
+              <p class="abstract">Instead of writing for actors, what if an AI asked them better questions? Actor's Note reframes LLMs as maieutic partners — companions that prompt reflection on script, role, and rehearsal, rather than generating text on the actor's behalf. Over two weeks of journaling, actors found their way deeper into their characters than they would alone.</p>
+            </div>
+            <div class="right">
+              <span>CHI 2026</span>
+              <div class="links"><a href="https://dl.acm.org/doi/pdf/10.1145/3772318.3790370" target="_blank">PDF</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="thread-panel" id="panel-2">
+        <div class="panel-intro">
+          <p>Studies on how AI can extend creative writing, reasoning, and everyday decision-making — and on when AI should generate less, not more, to preserve human authorship and thought.</p>
+        </div>
+        <div class="pubs">
+          <article class="pub">
+            <span class="yr">2026</span>
+            <div class="body">
+              <h4>Stop Writing for Me: Generative Refusal in AI Tools for Thought</h4>
+              <p class="au"><b>S. Kang</b></p>
+              <p class="abstract">Sometimes the most useful thing an AI can do is not write. A short manifesto for generative refusal — moments where the AI deliberately holds back, so the user gets to keep their own thinking.</p>
+            </div>
+            <div class="right">
+              <span>CHI 2026 Workshop · Tools for Thought</span>
+              <div class="links"><a href="#">PDF</a></div>
+            </div>
+          </article>
+          <article class="pub" style="padding: 16px 24px 16px">
+            <span class="yr">2026</span>
+            <div class="body">
+              <h4>Analyzing Human Heuristics and Strategies in Everyday Decision-Making Conversations for Conversational AI Design</h4>
+              <p class="au"><b>S. Kang</b>, S. Jeon, J. Eun, K. Lee, C. Song, M. Joo, J. Lee</p>
+              <p class="abstract">People don't make everyday decisions the way decision theorists do. We hedge, defer, change the subject, ask the other person what they think. This paper looks at the messy, social heuristics people actually use — and what conversational AI gets wrong when it tries to "help" us decide.</p>
+            </div>
+            <div class="right">
+              <span>CogSci 2026</span>
+              <div class="links"><a href="#">PDF</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="thread-panel" id="panel-3">
+        <div class="panel-intro">
+          <p>Studies on AI mediation across cultures, generations, and digital spaces, focusing on trust, transparency, and well-being.</p>
+        </div>
+        <div class="pubs">
+          <article class="pub">
+            <span class="yr">2025</span>
+            <div class="body">
+              <h4>ExplainitAI: When Do We Trust Artificial Intelligence?</h4>
+              <p class="au"><b>S. Kang</b>, A. E. Potinteu, N. Said</p>
+              <p class="abstract">Do Koreans and Germans trust AI the same way? Koreans trusted it more — but everyone's trust dropped the moment the topic got political. Explainability matters, but what the AI is talking about matters just as much.</p>
+            </div>
+            <div class="right">
+              <span>CHI EA 2025</span>
+              <div class="links"><a href="https://dl.acm.org/doi/pdf/10.1145/3706599.3720222" target="_blank">PDF</a></div>
+            </div>
+          </article>
+          <article class="pub">
+            <span class="yr">2026</span>
+            <div class="body">
+              <h4>Designing Transparent AI-Mediated Language Support for Intergenerational Family Communication</h4>
+              <p class="au"><b>S. Kang</b>, Y. Hwang, J. Lee</p>
+              <p class="abstract">Parents and kids increasingly speak different languages — slang, idioms, references that don't translate across generations. This work asks whether AI can bridge that gap, and finds something unexpected: families trust the AI more when they can see both the original and the translation. Hiding the original feels like being talked over.</p>
+            </div>
+            <div class="right">
+              <span>DIS Companion 2026</span>
+              <div class="links"><a href="https://arxiv.org/pdf/2604.19276" target="_blank">PDF</a></div>
+            </div>
+          </article>
+          <article class="pub">
+            <span class="yr">2024</span>
+            <div class="body">
+              <h4>Toward a Healthier Social Media Experience: Designing 'Inspiration' and 'Reality' Modes for Gen Z Well-Being</h4>
+              <p class="au"><b>S. Kang</b></p>
+              <p class="abstract">Social media flattens two very different things — aspiration and everyday life — into one feed. What if the platform let you choose which one you came for? A design proposal for Inspiration and Reality modes, made for the generation that grew up scrolling.</p>
+            </div>
+            <div class="right">
+              <span>KOSES Autumn 2024</span>
+              <div class="links"><a href="https://arxiv.org/pdf/2503.21195" target="_blank">PDF</a></div>
+            </div>
+          </article>
+        </div>
+        <div class="earlier-divider">Earlier work</div>
+        <div class="pubs">
+          <article class="pub">
+            <span class="yr">2024</span>
+            <div class="body">
+              <h4>Designing a User Interface for Generative Design in Augmented Reality: A Step Towards More Visualization and Feed-Forwarding</h4>
+              <p class="au"><b>S. Kang</b>, K. Yu, X. Zhou, J. Lee</p>
+            </div>
+            <div class="right">
+              <span>HCI Korea 2024</span>
+              <div class="links"><a href="https://arxiv.org/pdf/2503.21191" target="_blank">PDF</a></div>
+            </div>
+          </article>
+          <article class="pub">
+            <span class="yr">2023</span>
+            <div class="body">
+              <h4>An NLP-Driven Approach Using Twitter Data for Tailored K-pop Artist Recommendations</h4>
+              <p class="au"><b>S. Kang</b>, M. Lee</p>
+            </div>
+            <div class="right">
+              <span>ICES 2023</span>
+              <div class="links"><a href="https://arxiv.org/pdf/2503.21189" target="_blank">PDF</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </section>
+
+    <script>
+      (function(){
+        var cards = document.querySelectorAll('.thread-card');
+        var panels = document.querySelectorAll('.thread-panel');
+        cards.forEach(function(card){
+          card.addEventListener('click', function(){
+            var t = card.dataset.thread;
+            cards.forEach(function(c){ c.classList.remove('active'); });
+            panels.forEach(function(p){ p.classList.remove('open'); });
+            card.classList.add('active');
+            var panel = document.getElementById('panel-' + t);
+            if(panel) panel.classList.add('open');
+          });
+        });
+      })();
+    </script>
+
+    <!-- ACTING / ONE PAGE -->
+    <section id="acting" class="band band-acting">
+      <div class="h-section">
+        <span class="num">Acting</span>
+      </div>
+
+      <div class="acting-gallery">
+        <img class="ag-1" src="../assets/acting/02-musical-stairs.jpg" alt="Musical theater" />
+        <img class="ag-2" src="../assets/acting/03-film-street.jpg" alt="Film" />
+        <img class="ag-3" src="../assets/acting/01-stage-blue.jpg" alt="Stage performance" />
+        <img class="ag-4" src="../assets/acting/04-cf-mirror.jpg" alt="Commercial" />
+        <img class="ag-5" src="../assets/acting/05-film-blue.jpg" alt="Short film" />
+        <img class="ag-6" src="../assets/acting/06-cf-phone.jpg" alt="Commercial" />
+        <img class="ag-7" src="../assets/acting/07-film-kitchen.jpg" alt="Film" />
+      </div>
+
+      <div class="acting-text">
+        <p>I began my acting career in musical theater as a child, majored in musical acting at School of Performing Arts, Seoul, and later expanded my work to the screen. Acting diverse characters and putting myself in their shoes has nurtured my emotional range and deepened my understanding of people. Through years of reading scripts many times over, analyzing each line, developing the subtext beneath it, building characters, and constructing worlds on stage, I came to see language as something that informs and transforms human behavior and social interaction — a perspective that now grounds my research and creative practice.</p>
+      </div>
+    </section>
+
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="band band-projects">
+      <div class="h-section">
+        <span class="num">Making</span>
+      </div>
+
+      <div class="proj-sub">
+        <span class="proj-sub-label">Interactive Art &amp; Media</span>
+        <div class="art-grid">
+          <button class="proj-tile" onclick="openProject('lpm')">
+            <span class="pt-year">2018</span>
+            <h3 class="pt-title">Le Petit Monde</h3>
+            <span class="pt-brief">Projection mapping · Interactive installation</span>
+            <span class="pt-arrow">→ details</span>
+          </button>
+          <button class="proj-tile" onclick="openProject('vacant')">
+            <span class="pt-year">2020</span>
+            <h3 class="pt-title">空家 (Vacant Apartment)</h3>
+            <span class="pt-brief">ML · Digital diary installation</span>
+            <span class="pt-arrow">→ details</span>
+          </button>
+          <button class="proj-tile" onclick="openProject('blink')">
+            <span class="pt-year">2021</span>
+            <h3 class="pt-title">Don't Blink</h3>
+            <span class="pt-brief">CV · Observer effect · Speculative design</span>
+            <span class="pt-arrow">→ details</span>
+          </button>
+          <button class="proj-tile" onclick="openProject('weather')">
+            <span class="pt-year">2021</span>
+            <h3 class="pt-title">Weather#</h3>
+            <span class="pt-brief">VR · IMMERSIVE OPERA</span>
+            <span class="pt-arrow">→ details</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="proj-sub">
+        <span class="proj-sub-label">Software &amp; Development</span>
+        <div class="dev-grid">
+          <button class="proj-tile" onclick="openProject('ar')">
+            <span class="pt-year">2022</span>
+            <h3 class="pt-title">Generative Design for AR</h3>
+            <span class="pt-brief">UNITY · AR/VR · GENERATIVE DESIGN</span>
+            <span class="pt-arrow">→ details</span>
+          </button>
+          <button class="proj-tile" onclick="openProject('robo')">
+            <span class="pt-year">2022</span>
+            <h3 class="pt-title">Robo Advisor for Crypto</h3>
+            <span class="pt-brief">UI/UX · Data visualization · ML</span>
+            <span class="pt-arrow">→ details</span>
+          </button>
+          <button class="proj-tile" onclick="openProject('icareu')">
+            <span class="pt-year">2022</span>
+            <h3 class="pt-title">iCareU</h3>
+            <span class="pt-brief">APP · WEARABLE · HEALTHCARE</span>
+            <span class="pt-arrow">→ details</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projModal" class="proj-modal">
+      <div class="proj-modal-backdrop" onclick="closeProject()"></div>
+      <div class="proj-modal-content">
+        <button class="proj-modal-close" onclick="closeProject()">✕</button>
+        <div class="pm-meta"><span class="pm-num" id="pmNum"></span><span class="pm-year" id="pmYear"></span></div>
+        <h2 class="pm-title" id="pmTitle"></h2>
+        <div class="pm-role" id="pmRole"></div>
+        <div id="pmVideo" class="pm-video"></div>
+        <div id="pmFeaturedGallery" class="pm-gallery"></div>
+        <p class="pm-concept" id="pmConcept"></p>
+        <div id="pmGallery" class="pm-gallery"></div>
+        <div class="pm-tags" id="pmTags"></div>
+        <div class="pm-stack" id="pmStack"></div>
+      </div>
+    </div>
+
+    <!-- Image Lightbox -->
+    <div id="imageLightbox" class="image-lightbox" onclick="closeLightbox(event)">
+      <button class="image-lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lightboxImg" src="" alt="">
+    </div>
+
+    <script>
+      var projectData = {
+        lpm: { num:"Interactive · 01", year:"2018", title:"Le Petit Monde", role:"Team Lead · Tech Lead", images:["assets/projects/Le Petit Monde/29ba6063-545e-4c34-86d3-54295dd125b1_rw_1920.jpeg","assets/projects/Le Petit Monde/25dae47f-bb71-446b-b1cf-4383e753556a_rw_1920.jpeg","assets/projects/Le Petit Monde/267c3b29-9445-4c98-b87b-4537f8e94225_rw_1920.jpeg","assets/projects/Le Petit Monde/33950595-dab3-4e7d-a4a5-aacefa545c8f_rw_1920.jpeg","assets/projects/Le Petit Monde/974e55fe-aa02-4ed2-9558-b15a69128c81_rw_1920.jpg","assets/projects/Le Petit Monde/Screen_Shot_2022-12-06_at_11.15.30_PM.png","assets/projects/Le Petit Monde/ezgif.com-gif-maker_(5).gif","assets/projects/Le Petit Monde/image102.png","assets/projects/Le Petit Monde/98e0964c-8296-42bc-9202-b830bc5c3929_rw_1920.png","assets/projects/Le Petit Monde/c5aabd00-55e9-40e4-a66a-2b077a629b21_rw_3840.jpeg","assets/projects/Le Petit Monde/image117.png","assets/projects/Le Petit Monde/image95.jpg","assets/projects/Le Petit Monde/image147.jpg","assets/projects/Le Petit Monde/image80.png"], featuredImageIndices:[2,6,1,9], concept:"An interactive arts and projection mapping project that reimagines Antoine de Saint-Exupéry's The Little Prince as media art. The work invites adult visitors to step, just for a while, back into the way children see — to wander through a small world where ordinary objects refuse to stay ordinary. The space is built around tactile, proximity-based interactions. A hat-shaped object, when approached, slowly transforms into a boa constrictor swallowing an elephant. A small brick-like box, when touched, reveals itself as the house where the sheep lives. Around these objects, characters from the story appear as projected presences, each carrying the strange logic of adulthood that the Little Prince could never quite understand. The piece holds a quiet question for everyone who walks through it: what type of adult have we become?", tags:["Interactive Arts","Projection Mapping","Media Arts"], stack:"Arduino, vvvv, MadMapper, Processing", video:"https://youtu.be/ydnXU_t_VqE?si=ZjascsgWKXckaqBq" },
+        vacant: { num:"Interactive · 02", year:"2020", title:"空家 (Vacant Apartment)", role:"Tech Lead", images:["assets/projects/空家(Vacant Apartment)/0d4ce198-72ab-4653-9700-26ffe14deb9f_rw_1920.jpeg","assets/projects/空家(Vacant Apartment)/2ad63113-8713-464c-a674-7156df60a26c_rw_3840.jpg","assets/projects/空家(Vacant Apartment)/2de60d61-21de-4b0a-827b-836ae989f142_rw_1920.jpg","assets/projects/空家(Vacant Apartment)/34c9da2f-5bef-4b26-a434-b5e2aa1f25c9_rw_3840.jpg","assets/projects/空家(Vacant Apartment)/50db5370-9bbd-44d3-bd95-72e2eb664909_rw_1920.jpg","assets/projects/空家(Vacant Apartment)/5296b570-7649-42ba-8bc4-fe3fef35e717_rw_3840.jpg","assets/projects/空家(Vacant Apartment)/ezgif.com-gif-maker_(4).gif"], featuredImageIndices:[0,1,2], concept:"An interactive digital diary for Korea's 90s kids. The project is a series of 8 interactive digital diaries trained on Geurim Ilgijang — the illustrated daily journals kept by Korean children in the 1990s, where each page paired a child's drawing with a short handwritten entry about the day. The diary takes physical form as a large model book onto which the pages are projection-mapped. Beside it sits an old TV that plays a short video for each page. Visitors flip through the book page by page, and each turn reveals a small fragment of a vanished decade: the rhythms of school, weather, family, small joys, small embarrassments. The work treats personal memory and collective memory as the same material — a generation's interior life held inside a single shared object.", tags:["Interactive Arts","Natural Language Processing","Human-Computer Interaction"], stack:"Unity Engine, Machine Learning, Projection Mapping", video:"https://youtu.be/yoE3JSAexdk?si=J9-txo-1BCo1MMQ2" },
+        blink: { num:"Interactive · 03", year:"2021", title:"Don’t Blink", role:"Art-Technologist", images:["assets/projects/Don’t blink/111a5ecd-8584-4a75-b0bf-c45d7b6989dc_rw_1920.jpg","assets/projects/Don’t blink/65c9e452-eae2-49ef-a70f-dbe980177fa6_rw_1920.png","assets/projects/Don’t blink/6cf8b206-2021-4765-bd6b-22617bf75c6c_rw_1200.png","assets/projects/Don’t blink/d27a9c4b-2417-4eca-bc81-22272402acde_rw_1920.png","assets/projects/Don’t blink/ezgif.com-gif-maker_(4).gif","assets/projects/Don’t blink/maxresdefault.webp"], featuredImageIndices:[0,1,2], concept:"An interactive projection mapping installation inspired by the observer effect in quantum mechanics. The work extends this idea into a speculative proposition: what if our world, like a well-optimized game engine, only renders itself at the moment we look? In Don’t Blink, AI-generated human faces are projection-mapped onto a face-shaped statue. A webcam continuously tracks the audience’s eyes; the moment a viewer blinks or closes their eyes, OpenCV detects it and deforms the projected face. The viewer’s act of seeing becomes the work’s act of becoming. To look away — even for a fraction of a second — is to change what was there.", tags:["Speculative Design","Interactive Arts","Data Visualization","Media Arts"], stack:"OpenCV, TouchDesigner, MadMapper, webcam" },
+        weather: { num:"Interactive · 04", year:"2021", title:"Weather# — Online Multimedia Opera on Climate Change", role:"VR Developer, 3D Graphic Designer", images:["assets/projects/Weather%23/0990b09e-efef-4e8e-940b-bf8778732fd8_rw_1920.png","assets/projects/Weather%23/61a9370e-0e33-4b84-841a-77e685666186_rw_1920.png","assets/projects/Weather%23/65d5dad9-7fab-48c9-bd38-36146ccf3bb7_rw_1920.png","assets/projects/Weather%23/6d701aaf-d279-4a20-a840-832f67abee8c_rw_1920.png","assets/projects/Weather%23/ScreenShot2021-01-30at11.50.00PM.jpg","assets/projects/Weather%23/e1eab1c1-deea-4e47-93c0-bc6945a517b2_rw_1920.png","assets/projects/Weather%23/ezgif.com-gif-maker_(2).gif"], featuredImageIndices:[4,5,6], concept:"An online multimedia opera on climate change, produced through international collaboration involving artists from Italy, France, the United Kingdom, the United States, Korea, and Mexico. Rather than staging the work in a single physical theater, Weather# unfolds inside a 360° online space made up of 12 rooms — one for each month of the year. Each room contains a song, accompanying video and animation, and a curated set of references. The audience moves through the year by moving through the rooms, building their own path through the work. The form lets the opera carry what climate change actually feels like: not a single dramatic event, but an accumulation — twelve months, twelve weathers, twelve ways the world is changing at once.", tags:["AR/VR","Media Performance","Graphic Design","International Project"], stack:"", video:"https://weather-swados.app.vrty.io/" },
+        ar: { num:"Software · 01", year:"2022", title:"Generative Design for AR", role:"Unity Engine Developer", images:["assets/projects/Generative Design for AR/04dac9a9-4067-4a68-89e8-fc4de5c660dc_rw_1920.png","assets/projects/Generative Design for AR/81a1eaa4-4384-48cf-bedb-e017b0ce9b8c_rw_1920.png","assets/projects/Generative Design for AR/Sequence_05_1.gif"], concept:"A novel UI system for generative design software in AR that automates the process of generating potential design constraints based on the user's inputs. The system infers constraints from the spatial and object-level decisions the user is already making inside the AR environment. Users can construct a virtual environment, place and edit objects, adjust constraints in-context, and export the final dataset in CSV format. The AR interface is designed for intuitive spatial manipulation and provides immediate visual feedback. As Unity Engine developer on the team, I built the 3D space customization system and the graphic components that visualize objects, constraints, and their relationships in real time.", tags:["Human-Computer Interaction","AR/VR","User Experience"], stack:"Unity Engine", video:"https://youtu.be/A-fPqCUBWXQ?si=ODLb6UCcyelYpC-T" },
+        robo: { num:"Software · 02", year:"2022", title:"Robo Advisor for Crypto", role:"UI/UX Designer, Front-end Developer", images:[], concept:"A cryptocurrency portfolio risk and recommendation tool that pairs a machine learning algorithm with front-end web services to help investors at different experience levels reach more reliable investment decisions. The system analyzes portfolio composition, surfaces risk signals, and recommends adjustments — all packaged inside an interface designed to make crypto investing legible to people who don't speak the jargon. I worked as both UI/UX designer and front-end developer, designing the visual system and information architecture, and then implementing the interface — particularly the data visualization layer that translates ML output into something an investor can actually read at a glance.", tags:["Software Development","Data Visualization","UI/UX"], stack:"", video:"https://youtu.be/GXc00fF57Wk?si=liCGuFFU9I82g_x1" },
+        icareu: { num:"Software · 03", year:"2022", title:"iCareU", role:"App Developer", images:["assets/projects/iCareU/7d95bea7-f4b4-4f4e-8a9e-3e7d44be0309.jpeg","assets/projects/iCareU/Screen_Shot_2022-12-07_at_8.38.30_PM.png","assets/projects/iCareU/ezgif.com-gif-maker.gif"], concept:"A mental health system combining a mobile application and a wearable device that uses meditation practices to help users relieve stress and anxiety. The project treats meditation not as a single channel but as a multi-sensory environment that surrounds the user. The mobile app lets users customize and control their own background projection mapping, turning the room into a personal immersive meditation space. The wearable, worn around the neck, activates multiple senses in coordination: servos press gently on pressure points, speakers play calming music, scent pods release ambient smells, and a heater provides steady warmth. Together, app and device let the user assemble an environment tuned to whatever their body and mind need that day — sight, sound, scent, touch, and warmth, all controllable from the phone.", tags:["Human-Centered Design","Software Development","Projection Mapping","Unity Engine"], stack:"Unity Engine, Projection Mapping", video:"https://youtu.be/fzdRM9CffXw?si=EgBT_f1fcWX-yNrE" }
+      };
+      function getYouTubeEmbedUrl(url) {
+        var videoId = '';
+        if(url.includes('youtu.be/')) {
+          videoId = url.split('youtu.be/')[1].split('?')[0];
+        } else if(url.includes('youtube.com/watch')) {
+          videoId = url.split('v=')[1].split('&')[0];
+        }
+        return videoId ? 'https://www.youtube.com/embed/' + videoId : '';
+      }
+
+      function openProject(id) {
+        var p = projectData[id];
+        document.getElementById('pmNum').textContent = p.num;
+        document.getElementById('pmYear').textContent = p.year;
+        document.getElementById('pmTitle').textContent = p.title;
+        document.getElementById('pmRole').textContent = p.role;
+        document.getElementById('pmConcept').textContent = p.concept;
+        var tagsEl = document.getElementById('pmTags');
+        tagsEl.innerHTML = p.tags.map(function(t){ return '<span class="pm-tag">'+t+'</span>'; }).join('');
+        var stackEl = document.getElementById('pmStack');
+        stackEl.textContent = p.stack ? 'Stack: ' + p.stack : '';
+        stackEl.style.display = p.stack ? 'block' : 'none';
+
+        // Handle video
+        var videoEl = document.getElementById('pmVideo');
+        if(p.video) {
+          if(p.video.includes('youtube.com') || p.video.includes('youtu.be')) {
+            var embedUrl = getYouTubeEmbedUrl(p.video);
+            videoEl.innerHTML = '<iframe src="'+embedUrl+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+          } else {
+            videoEl.innerHTML = '<iframe src="'+p.video+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+          }
+          videoEl.style.display = 'block';
+        } else {
+          videoEl.style.display = 'none';
+        }
+
+        // Handle gallery
+        var featuredGalleryEl = document.getElementById('pmFeaturedGallery');
+        var galleryEl = document.getElementById('pmGallery');
+
+        if(p.images && p.images.length > 0) {
+          // Check if project has featured images
+          if(p.featuredImageIndices && p.featuredImageIndices.length > 0) {
+            // Featured images
+            var featuredImgs = p.featuredImageIndices.map(function(idx){
+              return p.images[idx];
+            });
+            featuredGalleryEl.innerHTML = featuredImgs.map(function(img){
+              return '<img src="'+img+'" alt="Project image" class="gallery-img">';
+            }).join('');
+            featuredGalleryEl.style.display = 'grid';
+
+            // Regular images (all except featured)
+            var featuredIndicesSet = new Set(p.featuredImageIndices);
+            var regularImgs = p.images.filter(function(img, idx){
+              return !featuredIndicesSet.has(idx);
+            });
+
+            galleryEl.innerHTML = regularImgs.map(function(img){
+              return '<img src="'+img+'" alt="Project image" class="gallery-img">';
+            }).join('');
+            galleryEl.style.display = 'grid';
+          } else {
+            // No featured images, show all in regular gallery
+            featuredGalleryEl.style.display = 'none';
+            galleryEl.innerHTML = p.images.map(function(img){
+              return '<img src="'+img+'" alt="Project image" class="gallery-img">';
+            }).join('');
+            galleryEl.style.display = 'grid';
+          }
+
+          // Add click handlers for featured gallery
+          var featuredImgs = featuredGalleryEl.querySelectorAll('.gallery-img');
+          featuredImgs.forEach(function(img){
+            img.addEventListener('click', function(){
+              openLightbox(this.src);
+            });
+          });
+
+          // Add click handlers for regular gallery
+          var imgs = galleryEl.querySelectorAll('.gallery-img');
+          imgs.forEach(function(img){
+            img.addEventListener('click', function(){
+              openLightbox(this.src);
+            });
+          });
+        } else {
+          featuredGalleryEl.style.display = 'none';
+          galleryEl.style.display = 'none';
+        }
+        document.getElementById('projModal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeProject() {
+        document.getElementById('projModal').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function openLightbox(src) {
+        document.getElementById('lightboxImg').src = src;
+        document.getElementById('imageLightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox(e) {
+        if(e && e.target !== document.getElementById('imageLightbox')) return;
+        document.getElementById('imageLightbox').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('keydown', function(e){
+        if(e.key==='Escape') {
+          closeLightbox();
+          closeProject();
+        }
+      });
+    </script>
+
+    <footer class="foot">
+      <span>© 2026 Sora Kang</span>
+      <span class="c">Seoul National University · HCI+D Lab</span>
+    </footer>
