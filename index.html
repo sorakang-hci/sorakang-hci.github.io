@@ -1861,5 +1861,16 @@
 
     <footer class="foot">
       <span>© 2026 Sora Kang</span>
-      <span class="c">Seoul National University · HCI+D Lab</span>
+      <span class="c">Seoul National University · HCI+D Lab · <a id="emailLink" href="#">email</a></span>
     </footer>
+
+    <script>
+      // Email protection: decode on load
+      document.getElementById('emailLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        var email = atob('c29yYWthbmdAc251LmFjLmty'); // Base64 encoded email
+        window.location.href = 'mailto:' + email;
+      });
+      // Show email hint on hover
+      document.getElementById('emailLink').title = 'Click to email';
+    </script>
